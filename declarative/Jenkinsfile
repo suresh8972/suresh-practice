@@ -11,7 +11,10 @@ pipeline {
         }
         stage ('BUILD') {
             steps {
-                sh 'mvn clean package'
+                dir (declarative) {
+                    sh 'mvn clean package'
+                }
+                
             }
         }
     }
