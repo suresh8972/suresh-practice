@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Nareshkumart19/docker-roboshop.git'
+            }
+        }
+        stage('Build Docker') {
+            steps {
+                dir('catalogue') {
+                    sh 'docker build -t nareshkumart/test:appv1 .'
+                }
+            }
+        }
+        stage('Build Docker01') {
+            steps {
+                dir('cart') {
+                    sh 'docker build -t nareshkumart/test01:appv1 .'
+                }
+            }
+        }
+        stage('registory') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: '13c6e84e-1491-4427-9678-9dc660fb2497') {
+                        sh 'docker push nareshkumart/test:appv1'
+                        sh 'docker push nareshkumart/test01:appv1'
+                    }
+                }
+            }
+        }
+    }
+}
