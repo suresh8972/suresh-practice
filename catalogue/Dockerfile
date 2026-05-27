@@ -1,6 +1,6 @@
 FROM node:20
 WORKDIR /opt/suresh
-COPY pakage.json .
+COPY package.json .
 COPY server.js .
 RUN npm install
 #    MONGO_URL="mongodb://mongodb:27017/catalogue"
