@@ -7,4 +7,3 @@ RUN npm install
 ENV MONGO=true
 ENV MONGO_URL="mongodb://mongodb:27017/catalogue"
 CMD ["node", "app.js"]
-CMD ["node", "app.js"]
