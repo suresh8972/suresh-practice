@@ -1,4 +1,4 @@
-FROM node.js:20
+FROM node:20
 WORKDIR /opt/suresh
 COPY pakage.json .
 COPY server.js .
